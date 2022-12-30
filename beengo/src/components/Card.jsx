@@ -20,15 +20,6 @@ export const Card = () => {
   const [secondRow, setSecondRow] = useState([])
   const [thirdRow, setThirdRow] = useState([])
 
-  useEffect(() => {
-    if (!cardValues || cardValues.length === 0) {
-      createValues()
-      createRows()
-      setLoading(false)
-    }
-    return () => { }
-  }, [])
-
   const createValues = () => {
     const values = []
     for (let i = 0; i < numbers.length; i++) {
@@ -37,24 +28,33 @@ export const Card = () => {
       values.push({ number: selected, match: false })
     }
     setCardValues(values)
+    createRows(values)
+    setLoading(false)
   }
 
-  const createRows = (cardValues) => {
-    for (let i = 0; i < cardValues.length; i++) {
+  const createRows = (values) => {
+    for (let i = 0; i < values.length; i++) {
       setFirstRow((firstRow) => [
         ...firstRow,
-        { number: cardValues[i].number[0], selected: false }
+        { number: values[i].number[0], selected: false }
       ])
       setSecondRow((secondRow) => [
         ...secondRow,
-        { number: cardValues[i].number[1], selected: false }
+        { number: values[i].number[1], selected: false }
       ])
       setThirdRow((thirdRow) => [
         ...thirdRow,
-        { number: cardValues[i].number[2], selected: false }
+        { number: values[i].number[2], selected: false }
       ])
     }
   }
+
+  useEffect(() => {
+    if (!cardValues || cardValues.length === 0) {
+      createValues()
+    }
+    return () => {}
+  }, [])
 
   return !loading
     ? (

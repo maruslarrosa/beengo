@@ -14,10 +14,13 @@
 
 .selected {
     background-color: coral;
-
 }
 
-p{
+.noValue {
+    background-color: black;
+}
+
+button{
     margin: 0;
     padding: 0;
     display: flex;
