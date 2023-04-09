@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
-import { Card, Main } from './components'
+import { BallCounter, Card } from './components'
 
 function App () {
+  const [ball, setBall] = useState(null)
   return (
     <div>
-      Beengo
-      <Card />
-      <Main />
+      <Card ball={ball}/>
+      <BallCounter setBall={setBall}/>
     </div>
   )
 }

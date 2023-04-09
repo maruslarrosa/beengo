@@ -3,30 +3,3 @@
     display: flex;
     height: 1.5rem;
 }
-
-.cell {
-    
-}
-
-.cell:hover {
-    background-color: aqua;
-}
-
-.selected {
-    background-color: coral;
-}
-
-.noValue {
-    background-color: black;
-}
-
-button{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    border: 1px solid black;
-}

@@ -13,12 +13,13 @@ const numbers = [
   [80, 81, 82, 83, 84, 85, 86, 87, 88, 90]
 ]
 
-export const Card = () => {
+export const Card = ({ ball }) => {
   const [loading, setLoading] = useState(true)
   const [cardValues, setCardValues] = useState([])
   const [firstRow, setFirstRow] = useState([])
   const [secondRow, setSecondRow] = useState([])
   const [thirdRow, setThirdRow] = useState([])
+  const [isLine, setIsLine] = useState(false)
 
   const createValues = () => {
     const values = []
@@ -56,12 +57,18 @@ export const Card = () => {
     return () => {}
   }, [])
 
+  useEffect(() => {
+    if (isLine) {
+      alert('LINEA')
+    }
+  }, [isLine])
+
   return !loading
     ? (
       <div className={styles.cardContainer}>
-        <Row values={firstRow} />
-        <Row values={secondRow} />
-        <Row values={thirdRow} />
+        <Row values={firstRow} ball={ball} setIsLine={setIsLine} />
+        <Row values={secondRow} ball={ball} setIsLine={setIsLine} />
+        <Row values={thirdRow} ball={ball} setIsLine={setIsLine} />
       </div>
       )
     : null

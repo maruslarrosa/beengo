@@ -1,18 +1,22 @@
-import { React, useState } from 'react'
-import styles from '../styles/row.module.css'
+import { React, useEffect, useState } from 'react'
+import styles from '../styles/cell.module.css'
 
-export const Cell = ({ props }) => {
-  const [cell, setCell] = useState(props)
+export const Cell = ({ element }) => {
+  const [cell, setCell] = useState(element)
 
   const handleCellClick = (cell) => {
     setCell({ number: cell.number, selected: !cell.selected })
   }
 
+  useEffect(() => {
+    console.log(cell)
+  }, [cell])
+
   return (
     cell
       ? <button
         onClick={() => handleCellClick(cell)}
-        className={cell.selected ? styles.selected : ''}
+        className={cell.selected ? styles.selected : styles.cell}
       >
         {cell.number}
       </button>
